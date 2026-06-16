@@ -25,7 +25,7 @@ import Cart from "./customer/pages/Cart.jsx";
 
 // Seller Pages
 import Dashboard from "./seller/pages/Dashboard.jsx";
-import Products from "./seller/pages/products.jsx";
+import Products from "./seller/pages/Products.jsx";
 import CreateProfile from "./seller/pages/CreateProfile.jsx";
 import Orders from "./seller/pages/OrdersDashboard.jsx";
 import Customers from "./seller/pages/CustomerPage.jsx";
