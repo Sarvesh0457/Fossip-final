@@ -8,7 +8,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-import "./dashboard.css";
+import "./Dashboard.css";
 
 import StatCard from "../components/charts/StatCard";
 import SalesChart from "../components/charts/SalesChart";
