@@ -4,7 +4,7 @@ import axios from "axios";
 import "./ProductDetails.css";
 import { useShop } from "../context/useShop";
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
+const API = import.meta.env.VITE_API_URL || "/api/v1";
 
 function ProductDetail() {
   const { id } = useParams();
