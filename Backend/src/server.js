@@ -1,4 +1,9 @@
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Fallback to local .env only if not running in production
 if (process.env.NODE_ENV !== "production") {
@@ -63,6 +68,12 @@ app.use("/api/v1/orders", orderRouter);
 app.use("/api/v1/reviews", reviewRouter);
 app.use("/api/v1/wishlist", wishlistRouter);
 app.use("/api/v1/payment", paymentRouter);
+
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+});
 
 // Connection (Fallback port 10000 ensures Render can assign a port if process.env.PORT is blank)
 const port = process.env.PORT || 10000;
