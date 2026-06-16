@@ -1,0 +1,41 @@
+.modern-searchbar {
+  width: 100%;
+  max-width: 280px;
+  height: 42px;
+  background: var(--bg-body); /* Soft gray */
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+/* Premium focus state when typing */
+.modern-searchbar:focus-within {
+  border-color: var(--text-main);
+  background: var(--bg-card);
+  box-shadow: 0 0 0 3px rgba(27, 37, 89, 0.05);
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.modern-searchbar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-left: 12px;
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.modern-searchbar input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}

@@ -1,0 +1,148 @@
+/* --- Main Layout --- */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  /* Padding and background are already handled by .seller-content wrapper */
+}
+
+/* Loading/Error */
+.dashboard-loading,
+.dashboard-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.dashboard-error {
+  color: var(--accent-color);
+  background: #fff1f1;
+  border-radius: var(--radius-lg);
+}
+
+/* --- Stats Grid --- */
+.stats-grid {
+  display: grid;
+  /* Auto-fit makes it infinitely responsive without needing messy media queries */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+  gap: 24px;
+}
+
+/* --- Shared Dashboard Cards --- */
+.dashboard-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+/* --- Chart Layouts --- */
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.sales-card, .order-status-card {
+  min-height: 420px;
+}
+
+/* --- Bottom Section Layout --- */
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.dashboard-left, .dashboard-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ==========================
+   Stat Card Styling
+========================== */
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.stat-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stat-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.stat-value {
+  margin: 12px 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.stat-growth {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.stat-growth.positive {
+  color: #10b981; /* Premium Emerald Green */
+  background: #ecfdf5;
+}
+
+.stat-growth.negative {
+  color: var(--accent-color); /* Premium Coral */
+  background: #fff1f1;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-body); /* Soft gray inset */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  flex-shrink: 0;
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 1200px) {
+  .dashboard-charts,
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+  .sales-card,
+  .order-status-card {
+    min-height: auto;
+  }
+}

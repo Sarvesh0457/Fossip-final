@@ -1,0 +1,50 @@
+/* --- Master Layout --- */
+.seller-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-body); /* Pulls the soft gray from index.css */
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Main Content Area --- */
+.seller-main {
+  margin-left: 260px; /* Standard SaaS sidebar width */
+  width: calc(100% - 260px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Page Content Wrapper --- */
+.seller-content {
+  padding: 32px;
+  flex-grow: 1;
+  max-width: 1400px; /* Keeps massive screens from stretching tables too far */
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Loading State --- */
+.seller-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  background-color: var(--bg-body);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .seller-main {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .seller-content {
+    padding: 24px 16px;
+  }
+}

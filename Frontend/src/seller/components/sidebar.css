@@ -1,0 +1,119 @@
+.sidebar {
+  width: 260px; /* Matched to AppSeler.css width */
+  height: 100vh;
+  background: var(--bg-card); /* Pure White */
+  border-right: 1px solid rgba(0, 0, 0, 0.05); /* Soft divider */
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.02); /* Slight depth */
+}
+
+.sidebar-header {
+  padding: 32px 24px;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.sidebar-header p {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.sidebar-menu {
+  padding: 10px 12px; /* Slight inset so hover states don't touch the edges */
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  margin-bottom: 4px;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+  background: var(--bg-body);
+  color: var(--text-main);
+  transform: translateX(4px); /* Subtle nudge effect */
+}
+
+.menu-icon {
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.menu-item.active {
+  background: #fff1f1; /* Very soft wash of the accent color */
+  color: var(--accent-color); /* Premium Coral */
+}
+
+.menu-item.active .menu-icon {
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+/* --- Mobile Menu Button --- */
+.menu-btn {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1200;
+  background: var(--bg-card);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  color: var(--text-main);
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+
+/* --- Overlay --- */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .menu-btn {
+    display: block;
+  }
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 993px) {
+  .sidebar {
+    transform: translateX(0);
+  }
+}

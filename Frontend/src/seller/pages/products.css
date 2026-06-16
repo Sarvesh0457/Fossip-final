@@ -1,0 +1,85 @@
+/* --- Page Layout --- */
+.products-page {
+  /* Padding is already handled by .seller-content in AppSeler.css */
+  min-height: 100vh;
+}
+
+/* --- Loading & Error States --- */
+.products-loading,
+.products-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.products-error {
+  color: var(--accent-color); /* Premium Coral/Red */
+  background: #fff1f1;
+  border-radius: var(--radius-lg);
+}
+
+/* --- Top Toolbar --- */
+.products-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap; /* Keeps it responsive on smaller screens */
+}
+
+.add-product-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text-main); /* Deep Charcoal/Blue */
+  color: #ffffff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.add-product-btn:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* --- Shared Cards Wrapper --- */
+.products-card {
+  background: var(--bg-card); /* Pure White */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden; /* Important so the table corners don't poke out */
+  margin-bottom: 24px;
+}
+
+/* --- Bottom Stats Grid --- */
+.products-stats {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .products-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .add-product-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .products-stats {
+    grid-template-columns: 1fr;
+  }
+}

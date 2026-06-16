@@ -1,0 +1,249 @@
+/* --- Top Announcement Bar --- */
+.top-announcement-bar {
+  background-color: var(--text-main); /* Deep, sophisticated navy/charcoal background */
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.top-bar-content {
+  width: min(95%, 1400px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.top-bar-content .divider {
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+}
+
+/* --- Main Floating Header --- */
+.main-header {
+  background-color: var(--bg-card); /* Pure White */
+  box-shadow: var(--shadow-soft);   /* Soft SaaS diffused shadow */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.header-container {
+  width: min(95%, 1400px);
+  height: 80px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* --- Modern Brand Logo --- */
+.brand-logo a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 26px;
+  font-weight: 800; /* Heavy geometric title weighting */
+  letter-spacing: -0.02em;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Central Navigation Links --- */
+.navigation-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.navigation-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.navigation-links a:hover,
+.navigation-links a.active-link {
+  color: var(--accent-color); /* Premium dashboard coral accent color */
+}
+
+/* Subtle animated indicator under active nav elements */
+.navigation-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.2s ease;
+}
+
+.navigation-links a:hover::after,
+.navigation-links a.active-link::after {
+  width: 100%;
+}
+
+/* --- Search Input Container --- */
+.search-wrapper {
+  width: 280px;
+}
+
+/* --- Right Utility Options --- */
+.utility-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.utility-item-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.utility-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.utility-card:hover {
+  background-color: var(--bg-body); /* Subtle gray background tint on hover */
+}
+
+.utility-card img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.85;
+}
+
+.utility-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* --- Clean Dashboard Action Buttons --- */
+.navbar-logout-btn {
+  background-color: transparent;
+  border: 1px solid rgba(27, 37, 89, 0.15);
+  color: var(--text-main);
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navbar-logout-btn:hover {
+  background-color: #fff1f1;
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* --- Responsive Layout & Mobile Breakpoints --- */
+.mobile-menu-trigger {
+  display: none;
+}
+
+.mobile-menu-trigger img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .navigation-links {
+    gap: 20px;
+  }
+  .brand-logo a {
+    font-size: 22px;
+  }
+  .search-wrapper {
+    width: 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navigation-links {
+    display: none;
+  }
+  .mobile-menu-trigger {
+    display: block;
+  }
+  .search-wrapper {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-announcement-bar {
+    display: none;
+  }
+  
+  .header-container {
+    height: 70px;
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .brand-logo {
+    order: 2;
+  }
+
+  .mobile-menu-trigger {
+    order: 1;
+  }
+
+  .utility-actions {
+    order: 3;
+    gap: 8px;
+  }
+
+  .search-wrapper {
+    display: none; /* Hidden on tiny screens to avoid overcrowding */
+  }
+
+  .utility-text {
+    display: none; /* Only show icons on mobile viewports */
+  }
+
+  .utility-card {
+    padding: 6px;
+  }
+
+  .mobile-navigation-overlay {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 16px;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.02);
+  }
+
+  .mobile-navigation-overlay a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 4px 0;
+  }
+}

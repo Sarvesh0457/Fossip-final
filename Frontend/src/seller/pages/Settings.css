@@ -1,0 +1,163 @@
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 100vh;
+}
+
+.settings-header {
+  margin-bottom: 8px;
+}
+
+.settings-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.settings-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.settings-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.settings-card h2 {
+  margin: 0 0 24px;
+  color: var(--text-main);
+  font-size: 18px;
+  font-weight: 800;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 16px;
+}
+
+.setting-item,
+.link-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.setting-item:last-child,
+.link-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.setting-item h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.setting-item p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.link-item span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Secondary Action Buttons */
+.link-item button {
+  border: none;
+  background: var(--bg-body);
+  color: var(--text-main);
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.link-item button:hover {
+  background: var(--text-main);
+  color: #ffffff;
+}
+
+/* --- Toggles (iOS / SaaS Style) --- */
+.switch {
+  position: relative;
+  width: 52px;
+  height: 28px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1); /* Soft off-state */
+  border-radius: 999px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  left: 4px;
+  top: 4px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input:checked + .slider {
+  background: var(--text-main); /* Premium Dark Navy/Black when ON */
+}
+
+input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+/* --- Danger Zone --- */
+.danger-card {
+  border: 1px solid #fecaca;
+  background: #fffcfc;
+}
+
+.danger-card h2 {
+  color: #b91c1c;
+  border-bottom-color: #fee2e2;
+}
+
+.danger-btn {
+  background: #ffffff !important;
+  color: #ef4444 !important;
+  border: 1px solid #f87171 !important;
+}
+
+.danger-btn:hover {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .settings-card { padding: 24px; }
+  .setting-item, .link-item { flex-direction: column; align-items: flex-start; gap: 16px; }
+}

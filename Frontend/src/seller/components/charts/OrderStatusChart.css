@@ -1,0 +1,128 @@
+.order-status-chart, .recent-orders {
+  padding: 32px;
+}
+
+.section-header, .chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.section-header h3, .chart-header h3 {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.chart-header p {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.section-header a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  background: var(--bg-body);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.section-header a:hover {
+  background: var(--text-main);
+  color: #ffffff;
+}
+
+.pie-wrapper {
+  margin-top: 20px;
+}
+
+.order-tooltip {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.order-tooltip-name {
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 13px;
+}
+
+.order-tooltip-value {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Orders Table */
+.orders-table-wrapper {
+  overflow-x: auto;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table thead th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--bg-body);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  white-space: nowrap;
+}
+
+.orders-table tbody td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.orders-table tbody tr:hover td {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted) !important;
+  padding: 40px !important;
+  font-weight: 600;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-badge.delivered { color: #10b981; background: #ecfdf5; }
+.status-badge.shipped { color: #3b82f6; background: #eff6ff; }
+.status-badge.pending { color: #f59e0b; background: #fffbeb; }
+.status-badge.cancelled { color: #ef4444; background: #fef2f2; }
+
+@media (max-width: 768px) {
+  .recent-orders, .order-status-chart { padding: 20px; }
+}

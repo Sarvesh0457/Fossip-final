@@ -1,0 +1,65 @@
+.review-section {
+  width: 100%;
+  min-height: 300px;
+  background: var(--bg-card); /* Merges seamlessly with the page */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 24px;
+}
+
+.stars {
+  color: var(--accent-color); /* Premium coral instead of yellow/gold */
+  font-size: 20px;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+}
+
+.review-text {
+  max-width: 800px;
+  color: var(--text-main);
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+.review-author {
+  display: flex;
+  gap: 16px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.slider-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.active-dot {
+  background: var(--accent-color);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .review-text {
+    font-size: 18px;
+  }
+}

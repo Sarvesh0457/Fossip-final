@@ -1,0 +1,120 @@
+.footer {
+  background-color: var(--bg-card); /* Uses the pure white SaaS background */
+  border-top: 1px solid rgba(0, 0, 0, 0.05); /* Much softer, elegant border */
+  /* Font family is automatically inherited from index.css now */
+}
+
+.footer-container {
+  max-width: 1400px; /* Matched the max-width of your Navbar for perfect alignment */
+  margin: 0 auto;
+  padding: 60px 24px 40px; /* Adjusted padding to match navbar edges */
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.2fr 1fr;
+  gap: 60px;
+}
+
+/* --- Brand Section --- */
+.footer-brand h2 {
+  color: var(--text-main); /* Deep charcoal/navy instead of bright blue */
+  font-size: 28px;
+  font-weight: 800; /* Matched the Navbar logo weight */
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  color: var(--text-muted); /* Soft gray */
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+/* --- Social Icons --- */
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icons a {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%; /* Keeping the soft circles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-icons img {
+  width: 18px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: var(--bg-body); /* Soft gray background on hover */
+  border-color: var(--accent-color); /* Premium coral accent border */
+  transform: translateY(-2px);
+}
+
+/* --- Link Columns --- */
+.footer-column h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 22px;
+  letter-spacing: 0.08em; /* Widened tracking for a premium look */
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 16px;
+}
+
+.footer-column a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: var(--accent-color); /* Highlights in coral/red */
+}
+
+/* --- Bottom Copyright --- */
+.footer-bottom {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* --- Responsive Formatting --- */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 20px 20px;
+  }
+
+  .footer-brand h2 {
+    font-size: 26px;
+  }
+}

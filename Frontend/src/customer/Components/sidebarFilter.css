@@ -1,0 +1,126 @@
+.filter-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-sidebar section {
+  padding: 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.filter-sidebar h3 {
+  margin: 0 0 16px;
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Clean Checkboxes --- */
+.filter-sidebar label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.filter-sidebar label:hover {
+  color: var(--text-main);
+}
+
+.filter-sidebar input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--text-main); /* Black/Charcoal checkboxes */
+  cursor: pointer;
+}
+
+.filter-sidebar small {
+  margin-left: auto;
+  color: #a0aec0;
+  font-size: 12px;
+}
+
+/* --- The Custom Dual Range Slider --- */
+.price-slider {
+  position: relative;
+  height: 24px;
+  margin-top: 16px;
+}
+
+/* The Gray Background Track */
+.price-slider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+/* The Colored Fill between handles */
+.price-fill {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 999px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* The actual invisible inputs */
+.price-slider input[type="range"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  appearance: none;
+  -webkit-appearance: none;
+  z-index: 2;
+  margin: 0;
+}
+
+/* The Draggable Handles */
+.price-slider input[type="range"]::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--accent-color);
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* --- Final Apply Button --- */
+.filter-sidebar > button {
+  margin: 24px;
+  padding: 14px;
+  background: var(--text-main);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.filter-sidebar > button:hover {
+  background: var(--accent-color);
+}

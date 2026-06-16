@@ -1,0 +1,95 @@
+.customer-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.customer-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Reusing your dashboard metric card theme */
+.customer-page .stat-card {
+  flex: 1;
+  min-width: 240px;
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* CRM Table Base */
+.customer-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.customer-table th {
+  text-align: left;
+  padding: 16px 24px;
+  background: var(--bg-body);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.customer-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.customer-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.customer-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--bg-body);
+}
+
+.active-badge {
+  display: inline-block;
+  background: #ecfdf5;
+  color: #10b981;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.details-btn {
+  border: none;
+  background: var(--bg-body);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.details-btn:hover {
+  background: var(--text-main);
+  color: #ffffff;
+}

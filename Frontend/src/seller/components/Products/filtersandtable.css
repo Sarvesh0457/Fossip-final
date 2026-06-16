@@ -1,0 +1,205 @@
+/* =========================================
+   PRODUCT FILTERS
+========================================= */
+.product-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.product-filters select {
+  padding: 10px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.product-filters select:focus {
+  border-color: var(--text-main);
+}
+
+.clear-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-filter-btn:hover {
+  background: #fff1f1;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* =========================================
+   PRODUCT TABLE
+========================================= */
+.product-table-wrapper {
+  width: 100%;
+  overflow-x: auto; /* Allows horizontal scroll on small screens */
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* --- Table Headers --- */
+.product-table th {
+  padding: 16px 24px;
+  background: var(--bg-body); /* Slight gray offset from white card */
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+}
+
+/* --- Table Rows --- */
+.product-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  vertical-align: middle;
+  font-size: 14px;
+  color: var(--text-main);
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.product-table tbody tr:hover td {
+  background: rgba(0, 0, 0, 0.01); /* Very subtle hover highlight */
+}
+
+/* --- Checkboxes --- */
+.product-table input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--text-main); /* Black/Navy Checkboxes */
+  cursor: pointer;
+}
+
+/* --- Thumbnail & Product Info --- */
+.table-product-image {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.table-product-name {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.table-product-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* --- Data Pills --- */
+.category-pill {
+  display: inline-block;
+  background: var(--bg-body);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: capitalize;
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Dynamic Status Colors */
+.status-pill.active {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+.status-pill.draft {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.status-pill.out-of-stock {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.stock-zero {
+  color: #ef4444 !important;
+  font-weight: 800 !important;
+}
+
+/* --- Action Buttons --- */
+.table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.table-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Edit Hover */
+.table-actions button:first-child:hover {
+  background: var(--bg-body);
+  color: var(--text-main);
+}
+
+/* Delete Hover */
+.table-actions button:last-child:hover {
+  background: #fff1f1;
+  color: var(--accent-color);
+}
+
+/* --- Empty State --- */
+.empty-products {
+  text-align: center;
+  padding: 60px !important;
+  color: var(--text-muted) !important;
+  font-weight: 600;
+  font-size: 15px;
+}

@@ -1,0 +1,90 @@
+/* ==========================
+   Sales Chart
+========================== */
+.sales-chart {
+  padding: 24px 32px; /* Forces spacing away from the edges */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Aligns the badge vertically with the text */
+  margin-bottom: 32px; /* Gives the chart breathing room below */
+  width: 100%;
+}
+
+.chart-header > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Crisp spacing between title and subtitle */
+}
+
+.chart-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.chart-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.chart-period {
+  padding: 6px 12px;
+  background: var(--bg-body); /* Soft gray pill */
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap; /* Prevents the text from wrapping */
+}
+
+.chart-wrapper {
+  flex-grow: 1; /* Forces the chart to fill the remaining space */
+  width: 100%;
+}
+
+/* Tooltip */
+.sales-tooltip {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.tooltip-month {
+  margin: 0 0 4px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tooltip-value {
+  margin: 0;
+  font-weight: 800;
+  color: var(--text-main);
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .sales-chart { 
+    padding: 20px; 
+  }
+  .chart-header { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 16px; 
+  }
+}
