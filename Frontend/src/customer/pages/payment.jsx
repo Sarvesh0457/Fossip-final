@@ -90,7 +90,7 @@
 
 // export default Payment;
 
-import "./Payment.css";
+import "./payment.css";
 import { useState } from "react";
 import { useShop } from "../context/useShop";
 import { createOrderApi } from "../api/order.api";
