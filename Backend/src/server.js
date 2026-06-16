@@ -73,7 +73,7 @@ app.use("/api/v1/payment", paymentRouter);
 app.use(express.static(path.join(__dirname, "../../Frontend/dist")));
 
 // --- FIXED WILDCARD ROUTE SYNTAX FOR EXPRESS V5 ---
-app.get("/:any*", (req, res) => {
+app.get(/^(?!\/api).*$/, (req, res) => {
   res.sendFile(path.join(__dirname, "../../Frontend/dist/index.html"));
 });
 
