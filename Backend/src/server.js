@@ -69,11 +69,11 @@ app.use("/api/v1/reviews", reviewRouter);
 app.use("/api/v1/wishlist", wishlistRouter);
 app.use("/api/v1/payment", paymentRouter);
 
-// --- FRONTEND SERVING (Fixed Casing to 'Frontend') ---
+// --- FRONTEND SERVING ---
 app.use(express.static(path.join(__dirname, "../../Frontend/dist")));
 
 // --- FIXED WILDCARD ROUTE SYNTAX FOR EXPRESS V5 ---
-app.get("(.*)", (req, res) => {
+app.get("/:any*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../Frontend/dist/index.html"));
 });
 
