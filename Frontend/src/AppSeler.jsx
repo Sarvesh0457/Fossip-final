@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "./customer/context/AuthContext";
 import { profileService } from "./seller/services/profileService";
 
-import Sidebar from "./seller/components/Sidebar";
+import Sidebar from "./seller/components/sidebar";
 import Navbar from "./seller/components/Navbar";
 
 import "./AppSeler.css";
