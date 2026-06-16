@@ -3,7 +3,7 @@ import "./Explore.css";
 import ProductGrid from "../Components/ProductGrid.jsx";
 import FilterSidebar from "../Components/sidebarFilter.jsx";
 import { useParams } from "react-router-dom";
-import { fetchProducts } from "../api/ProductApi";
+import { fetchProducts } from "../api/Productapi.js";
 import { useProductFilters } from "../hooks/useProductFilters.js";
 import { useExploreControls } from "../hooks/useExploreControls.js";
 
