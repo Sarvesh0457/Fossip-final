@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import "./profile.css";
+import "./Profile.css";
 
 import ProfilePhotoCard from "../components/Profile/ProfilePhotoCard";
 import PersonalInfoForm from "../components/Profile/PersonalInfoForm";
