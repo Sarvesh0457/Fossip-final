@@ -5,11 +5,11 @@ import { Plus } from "lucide-react";
 
 import "./products.css";
 
-import ProductFilters from "../components/products/ProductFilters";
-import ProductTable from "../components/products/ProductTable";
-import InventoryCard from "../components/products/InventoryCard";
-import SKUCard from "../components/products/SKUCard";
-import Pagination from "../components/products/Pagination";
+import ProductFilters from "../components/Products/ProductFilters";
+import ProductTable from "../components/Products/ProductTable";
+import InventoryCard from "../components/Products/InventoryCard";
+import SKUCard from "../components/Products/SKUCard";
+import Pagination from "../components/Products/Pagination";
 import CreateProductCard from "../components/CreateProductCard";
 
 import useProducts from "../hooks/useProducts";
