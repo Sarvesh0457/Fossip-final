@@ -10,7 +10,7 @@ import {
   X,
 } from "lucide-react";
 
-import "./Sidebar.css";
+import "./sidebar.css";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
