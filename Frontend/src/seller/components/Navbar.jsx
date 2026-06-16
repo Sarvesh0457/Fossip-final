@@ -3,7 +3,7 @@ import { Search, CircleHelp, UserCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../customer/context/AuthContext";
 
-import "./Navbar.css";
+import "./navbar.css";
 
 const Navbar = () => {
   const { user } = useAuth();
