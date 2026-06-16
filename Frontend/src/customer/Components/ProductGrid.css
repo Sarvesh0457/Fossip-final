@@ -1,6 +1,6 @@
 .product-grid {
   display: flex !important;
-  felx-wrap: wrap !important;
+  flex-wrap: wrap !important;
   gap: 24px;
   padding: 24px 0;
   align-items: flex-start !important;
