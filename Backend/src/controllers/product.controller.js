@@ -8,6 +8,7 @@ import { ApiResponse } from "../utils/api-response.js";
 import { uploadToCloudinary } from "../utils/cloudinary.js";
 
 const createProduct = asyncHandler(async (req, res) => {
+  console.log("Inside createProduct");
   console.log("HEADERS:", req.headers);
   console.log("BODY:", req.body);
   const {

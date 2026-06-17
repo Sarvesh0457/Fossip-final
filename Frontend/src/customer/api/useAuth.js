@@ -15,10 +15,11 @@ export const useAuth = () => {
 
     const fetchUser = async () => {
       try {
-        const res = await getCurrentUser(token);
+        const res = await getCurrentUser();
 
         setUser(res.data?.data || null);
       } catch (err) {
+        console.error("Failed to fetch user:", err);
         localStorage.removeItem("accessToken");
         setUser(null);
       } finally {

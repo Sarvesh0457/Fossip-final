@@ -1,6 +1,7 @@
 .product-card {
-  width: 250px !important; /* Absolute strict width */
-  flex: 0 0 auto; /* Completely disables stretching */
+  width: 250px !important;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   background: var(--bg-card);
@@ -9,7 +10,9 @@
   box-shadow: var(--shadow-soft);
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .product-card:hover {
@@ -18,22 +21,24 @@
 }
 
 .image-wrap {
-  width: 100%;
-  height: 320px !important; /* Absolute strict height */
-  aspect-ratio: 3 / 4; /* Maintains a consistent aspect ratio */
   position: relative;
+  height: 250px !important;
+  aspect-ratio: 3 / 4;
   background: var(--bg-body);
   overflow: hidden;
 }
 
+.image-wrap {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+}
+
 .product-image {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  display: block;
   transition: transform 0.5s ease;
 }
 
@@ -42,25 +47,15 @@
 }
 
 .heart-button {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  background: #ffffff;
-  border: none;
+  align-self: self-end;
+  width: 50px;
+  height: 50px;
+  background: white;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 
-.heart-button:hover {
-  transform: scale(1.1);
+  z-index: 100;
 }
 
 .age-badge {
@@ -77,15 +72,17 @@
 }
 
 .product-details-card {
-  padding: 16px;
+  padding: 5px 10px;
   display: flex;
   flex-direction: column;
+  width: 100%;
   flex-grow: 1;
 }
 
 .card-header-row {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   align-items: flex-start;
   margin-bottom: 8px;
 }
@@ -148,7 +145,7 @@
   padding: 10px;
   background-color: var(--bg-body);
   color: var(--text-main);
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: var(--radius-sm);
   font-size: 13px;
   font-weight: 700;

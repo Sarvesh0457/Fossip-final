@@ -19,6 +19,7 @@ import ProductDetail from "./customer/pages/ProductDetail.jsx";
 import Wishlist from "./customer/pages/Wishlist.jsx";
 import CustProfile from "./customer/pages/Profile.jsx";
 import Cart from "./customer/pages/Cart.jsx";
+import OrdersHistory from "./customer/pages/OrderHistory.jsx";
 
 // // Seller Layout
 // import SellerLayout from "./seller/components/layout/Layout.jsx";
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: "payment",
         element: <Payment />,
+      },
+      {
+        path: "orders",
+        element: <OrdersHistory />,
       },
     ],
   },

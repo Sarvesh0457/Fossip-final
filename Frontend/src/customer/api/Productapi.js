@@ -1,9 +1,7 @@
-import axios from "axios";
-
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
+import API from "./axiosClient";
 
 export const fetchProducts = async (gender) => {
-  const response = await axios.get(`${API_URL}/products`, {
+  const response = await API.get(`/products`, {
     params: gender ? { gender } : {},
     headers: {
       "Cache-Control": "no-cache",
@@ -15,6 +13,6 @@ export const fetchProducts = async (gender) => {
 };
 
 export const fetchProductById = async (id) => {
-  const res = await axios.get(`${API_URL}/products/${id}`);
+  const res = await API.get(`/products/${id}`);
   return res.data.data;
 };

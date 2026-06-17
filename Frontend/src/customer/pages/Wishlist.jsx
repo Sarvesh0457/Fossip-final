@@ -1,10 +1,29 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import { useShop } from "../context/useShop";
 import "./ShopPages.css";
 
 function Wishlist() {
+  const { user } = useAuth();
   const { wishlistItems, removeFromWishlist, moveWishlistItemToCart } =
     useShop();
+
+  const validWishlistItems = wishlistItems.filter((item) => item.product);
+
+  if (!user) {
+    return (
+      <main className="shop-page">
+        <section className="empty-state">
+          <h2>Log in to view your wishlist</h2>
+          <p>Save products you love and find them here later.</p>
+
+          <Link className="primary-shop-btn" to="/login">
+            Log In
+          </Link>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="shop-page">
@@ -19,7 +38,7 @@ function Wishlist() {
         </Link>
       </section>
 
-      {wishlistItems.length === 0 ? (
+      {validWishlistItems.length === 0 ? (
         <section className="empty-state">
           <h2>Your wishlist is empty</h2>
           <p>Tap the heart icon to save products.</p>
@@ -30,54 +49,53 @@ function Wishlist() {
         </section>
       ) : (
         <section className="wishlist-grid">
-          {wishlistItems.map((item) => (
-            <article className="wishlist-card" key={item._id}>
-              <Link
-                className="wishlist-image"
-                to={`/product/${item.product._id}`}
-              >
-                <img
-                  src={item.product.images?.[0]?.url}
-                  alt={item.product.name}
-                />
-              </Link>
+          {validWishlistItems.map((item) => {
+            const product = item.product;
+            const price = product.discountedPrice || product.price;
 
-              <div className="wishlist-info">
-                <Link to={`/product/${item.product._id}`}>
-                  <h2>{item.product.brand}</h2>
-
-                  <p>{item.product.name}</p>
+            return (
+              <article className="wishlist-card" key={item._id}>
+                <Link
+                  className="wishlist-image"
+                  to={`/product/${product._id}`}
+                >
+                  <img
+                    src={product.images?.[0]?.url || product.image || product.imageUrl}
+                    alt={product.name}
+                  />
                 </Link>
 
-                <strong>
-                  ₹
-                  {(
-                    item.product.discountedPrice || item.product.price
-                  ).toLocaleString()}
-                </strong>
+                <div className="wishlist-info">
+                  <Link to={`/product/${product._id}`}>
+                    <h2>{product.brand}</h2>
+                    <p>{product.name}</p>
+                  </Link>
 
-                <span className="wishlist-rating">
-                  ⭐ {item.product.averageRating}
-                </span>
-              </div>
+                  <strong>Rs. {Number(price || 0).toLocaleString()}</strong>
 
-              <div className="wishlist-actions">
-                <button
-                  className="primary-shop-btn"
-                  onClick={() => moveWishlistItemToCart(item)}
-                >
-                  Move to Cart
-                </button>
+                  <span className="wishlist-rating">
+                    ★ {product.averageRating || product.rating || 0}
+                  </span>
+                </div>
 
-                <button
-                  className="remove-btn"
-                  onClick={() => removeFromWishlist(item.product._id)}
-                >
-                  Remove
-                </button>
-              </div>
-            </article>
-          ))}
+                <div className="wishlist-actions">
+                  <button
+                    className="primary-shop-btn"
+                    onClick={() => moveWishlistItemToCart(item)}
+                  >
+                    Move to Cart
+                  </button>
+
+                  <button
+                    className="remove-btn"
+                    onClick={() => removeFromWishlist(product._id)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </article>
+            );
+          })}
         </section>
       )}
     </main>

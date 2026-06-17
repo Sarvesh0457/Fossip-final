@@ -25,6 +25,8 @@ export const ShopProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       loadWishlist();
+    } else {
+      setWishlistItems([]);
     }
   }, [user]);
 
@@ -33,27 +35,35 @@ export const ShopProvider = ({ children }) => {
 
     try {
       const res = await getWishlistApi();
-      setWishlistItems(res.data.data);
+      setWishlistItems(Array.isArray(res.data.data) ? res.data.data : []);
     } catch (err) {
       console.log(err);
     }
   };
 
   const addToWishlist = async (productId) => {
+    if (!user) return false;
+
     try {
       await addToWishlistApi(productId);
-      loadWishlist();
+      await loadWishlist();
+      return true;
     } catch (err) {
       console.log(err);
+      return false;
     }
   };
 
   const removeFromWishlist = async (productId) => {
+    if (!user) return false;
+
     try {
       await removeWishlistApi(productId);
-      loadWishlist();
+      await loadWishlist();
+      return true;
     } catch (err) {
       console.log(err);
+      return false;
     }
   };
 
@@ -68,8 +78,10 @@ export const ShopProvider = ({ children }) => {
 
       await fetchCart();
       await loadWishlist();
+      return true;
     } catch (err) {
       console.log(err);
+      return false;
     }
   };
 
@@ -88,11 +100,17 @@ export const ShopProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       fetchCart();
+    } else {
+      setCartItems([]);
     }
   }, [user]);
 
   // ADD TO CART
   const addToCart = async (product, size, color) => {
+    if (!user) {
+      throw new Error("NOT_AUTHENTICATED");
+    }
+
     try {
       const payload = {
         productId: product._id,
@@ -106,8 +124,10 @@ export const ShopProvider = ({ children }) => {
       await addToCartApi(payload);
 
       fetchCart();
+      return true;
     } catch (err) {
       console.log("Add to cart error:", err.response?.data || err.message);
+      return false;
     }
   };
 

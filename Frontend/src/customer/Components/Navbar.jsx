@@ -20,6 +20,7 @@ const menuItems = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [profileDropdown, setProfileDropdown] = useState(false);
   const { user, logout } = useAuth();
   const location = useLocation(); // Helps us highlight the active page
 
@@ -40,7 +41,10 @@ const Navbar = () => {
       <header className="main-header">
         <div className="header-container">
           {/* Mobile Menu Trigger */}
-          <div className="mobile-menu-trigger" onClick={() => setMenuOpen(!menuOpen)}>
+          <div
+            className="mobile-menu-trigger"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <img src={menu} alt="Open Menu" />
           </div>
 
@@ -54,9 +58,9 @@ const Navbar = () => {
             {menuItems.map((item) => {
               const isActive = location.pathname === item.path;
               return (
-                <Link 
-                  key={item.name} 
-                  to={item.path} 
+                <Link
+                  key={item.name}
+                  to={item.path}
                   className={isActive ? "active-link" : ""}
                 >
                   {item.name}
@@ -73,12 +77,57 @@ const Navbar = () => {
           {/* Action Utilities Group */}
           <div className="utility-actions">
             {/* Account Profile Link */}
-            <Link to={user ? "/profile" : "/login"} className="utility-item-link">
-              <div className="utility-card">
-                <img src={profile} alt="Account" />
-                <span className="utility-text">{user ? user.username : "Login"}</span>
-              </div>
-            </Link>
+            <div className="profile-dropdown-wrapper">
+              {!user ? (
+                <Link to="/login" className="utility-item-link">
+                  <div className="utility-card">
+                    <img src={profile} alt="Account" />
+                    <span className="utility-text">Login</span>
+                  </div>
+                </Link>
+              ) : (
+                <>
+                  <div
+                    className="utility-card profile-trigger"
+                    onClick={() => setProfileDropdown(!profileDropdown)}
+                  >
+                    <img src={profile} alt="Account" />
+
+                    <span className="utility-text">{user.username}</span>
+
+                    <span className="dropdown-arrow">▼</span>
+                  </div>
+
+                  {profileDropdown && (
+                    <div className="profile-dropdown">
+                      <Link
+                        to="/profile"
+                        onClick={() => setProfileDropdown(false)}
+                      >
+                        My Profile
+                      </Link>
+
+                      <Link
+                        to="/orders"
+                        onClick={() => setProfileDropdown(false)}
+                      >
+                        Order History
+                      </Link>
+
+                      <button
+                        className="dropdown-logout-btn"
+                        onClick={() => {
+                          logout();
+                          setProfileDropdown(false);
+                        }}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
 
             {/* Wishlist Link */}
             <Link to="/wishlist" className="utility-item-link">
@@ -110,7 +159,11 @@ const Navbar = () => {
       {menuOpen && (
         <div className="mobile-navigation-overlay">
           {menuItems.map((item) => (
-            <Link key={item.name} to={item.path} onClick={() => setMenuOpen(false)}>
+            <Link
+              key={item.name}
+              to={item.path}
+              onClick={() => setMenuOpen(false)}
+            >
               {item.name}
             </Link>
           ))}

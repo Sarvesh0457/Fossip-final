@@ -1,6 +1,8 @@
 /* --- Top Announcement Bar --- */
 .top-announcement-bar {
-  background-color: var(--text-main); /* Deep, sophisticated navy/charcoal background */
+  background-color: var(
+    --text-main
+  ); /* Deep, sophisticated navy/charcoal background */
   height: 38px;
   display: flex;
   justify-content: center;
@@ -28,7 +30,7 @@
 /* --- Main Floating Header --- */
 .main-header {
   background-color: var(--bg-card); /* Pure White */
-  box-shadow: var(--shadow-soft);   /* Soft SaaS diffused shadow */
+  box-shadow: var(--shadow-soft); /* Soft SaaS diffused shadow */
   position: sticky;
   top: 0;
   z-index: 100;
@@ -53,7 +55,7 @@
   font-size: 26px;
   font-weight: 800; /* Heavy geometric title weighting */
   letter-spacing: -0.02em;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 /* --- Central Navigation Links --- */
@@ -81,7 +83,7 @@
 
 /* Subtle animated indicator under active nav elements */
 .navigation-links a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -197,7 +199,7 @@
   .top-announcement-bar {
     display: none;
   }
-  
+
   .header-container {
     height: 70px;
     padding: 0 16px;
@@ -245,5 +247,90 @@
     font-size: 15px;
     font-weight: 600;
     padding: 4px 0;
+  }
+}
+
+.profile-dropdown-wrapper {
+  position: relative;
+}
+
+.profile-trigger {
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  margin-left: 5px;
+  color: #6b7280;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 115%;
+  right: 0;
+
+  width: 220px;
+
+  background: white;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+
+  border: 1px solid #f1f5f9;
+
+  animation: dropdownAnimation 0.2s ease;
+
+  z-index: 9999;
+}
+
+.profile-dropdown a,
+.dropdown-logout-btn {
+  width: 100%;
+
+  display: block;
+
+  padding: 15px 20px;
+
+  border: none;
+
+  background: white;
+
+  text-decoration: none;
+
+  color: #111827;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.profile-dropdown a:hover,
+.dropdown-logout-btn:hover {
+  background: #f8fafc;
+}
+
+.dropdown-logout-btn {
+  border-top: 1px solid #f1f5f9;
+  color: #ef4444;
+}
+
+@keyframes dropdownAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

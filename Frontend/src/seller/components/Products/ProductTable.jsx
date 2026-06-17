@@ -98,7 +98,7 @@ const ProductTable = ({
                     <span className="category-pill">{category}</span>
                   </td>
 
-                  <td>${price}</td>
+                  <td>₹{price}</td>
 
                   <td className={stock === 0 ? "stock-zero" : ""}>{stock}</td>
 

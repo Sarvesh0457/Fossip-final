@@ -88,12 +88,13 @@ const createOrder = asyncHandler(async (req, res) => {
 });
 
 const getMyOrders = asyncHandler(async (req, res) => {
+  console.log("aidmo");
   const orders = await Order.find({
     user: req.user._id,
   })
     .populate("items.product")
     .sort({ createdAt: -1 });
-
+  console.log("orders:", orders);
   return res
     .status(200)
     .json(new ApiResponse(200, orders, "Buyer orders fetched"));

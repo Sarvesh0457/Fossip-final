@@ -1,0 +1,84 @@
+.order-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+}
+
+.product-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.orders-product-image {
+  width: clamp(100px, 9vw, 400px);
+  height: clamp(100px, 9vw, 400px);
+  border-radius: 10px;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.product-details h3 {
+  font-size: clamp(19px, 1.7vw, 50px);
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.sub-title {
+  color: #808080;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  color: #666;
+  font-size: clamp(16px, 1vw, 50px);
+  margin-bottom: 8px;
+}
+
+.order-id {
+  color: #666;
+}
+
+.price-section {
+  min-width: 140px;
+  text-align: right;
+}
+
+.price-section h3 {
+  font-size: 28px;
+  color: #111827;
+}
+
+.Progress-bar-orders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .product-row {
+    flex-direction: column;
+  }
+
+  .price-section {
+    text-align: left;
+  }
+
+  .product-image {
+    width: 90px;
+    height: 90px;
+  }
+
+  .product-details h3 {
+    font-size: 18px;
+  }
+}
