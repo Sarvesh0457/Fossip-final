@@ -28,7 +28,7 @@
 .stats-grid {
   display: grid;
   /* Auto-fit makes it infinitely responsive without needing messy media queries */
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 24px;
 }
 
@@ -48,7 +48,8 @@
   gap: 24px;
 }
 
-.sales-card, .order-status-card {
+.sales-card,
+.order-status-card {
   min-height: 420px;
 }
 
@@ -59,7 +60,8 @@
   gap: 24px;
 }
 
-.dashboard-left, .dashboard-right {
+.dashboard-left,
+.dashboard-right {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -74,7 +76,9 @@
   border-radius: var(--radius-lg);
   padding: 24px;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
@@ -119,7 +123,7 @@
 }
 
 .stat-growth.negative {
-  color: var(--accent-color); /* Premium Coral */
+  color: var(--accent-color);
   background: #fff1f1;
 }
 
@@ -127,7 +131,7 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-sm);
-  background: var(--bg-body); /* Soft gray inset */
+  background: var(--bg-body);
   display: flex;
   align-items: center;
   justify-content: center;

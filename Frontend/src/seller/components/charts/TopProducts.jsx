@@ -16,7 +16,7 @@ const TopProducts = ({ title, products = [] }) => {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="product-image"
+                  className="top-product-image"
                 />
 
                 <div>

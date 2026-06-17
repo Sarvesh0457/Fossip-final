@@ -5,8 +5,8 @@ import "./CreateProductCard.css";
 
 const CreateProductCard = ({ product, onInputChange, onCreateProduct }) => {
   return (
-    <div className="product-card">
-      <div className="product-card-header">
+    <div className="create-product-card">
+      <div className="create-product-card-header">
         <h2>Create Product</h2>
         <p>Add a new product to your store.</p>
       </div>

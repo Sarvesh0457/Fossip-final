@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./ProductDetails.css";
 import { useShop } from "../context/useShop";
+import { useAuth } from "../context/AuthContext";
 
 const API = import.meta.env.VITE_API_URL || "/api/v1";
 
@@ -18,10 +19,9 @@ function ProductDetail() {
   const [pincodeMessage, setPincodeMessage] = useState("");
   const [openSection, setOpenSection] = useState("description");
 
-  // optional: connect later to cart context
-  const { addToCart } = useShop();
-  const isWishlisted = () => false;
-  const toggleWishlist = () => {};
+  const { user } = useAuth();
+  const { addToCart, wishlistItems, addToWishlist, removeFromWishlist } =
+    useShop();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -70,7 +70,22 @@ function ProductDetail() {
     setOpenSection((prev) => (prev === section ? "" : section));
   };
 
-  const isWishlistedItem = isWishlisted(product._id);
+  const isWishlistedItem = wishlistItems.some(
+    (item) => item.product?._id === product._id,
+  );
+
+  const toggleWishlist = () => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    if (isWishlistedItem) {
+      removeFromWishlist(product._id);
+    } else {
+      addToWishlist(product._id);
+    }
+  };
 
   return (
     <main className="product-detail-page">
@@ -103,7 +118,10 @@ function ProductDetail() {
 
               <button
                 className={`heart-btn ${isWishlistedItem ? "active" : ""}`}
-                onClick={() => toggleWishlist(product)}
+                onClick={toggleWishlist}
+                aria-label={
+                  isWishlistedItem ? "Remove from wishlist" : "Add to wishlist"
+                }
               >
                 {isWishlistedItem ? "♥" : "♡"}
               </button>
