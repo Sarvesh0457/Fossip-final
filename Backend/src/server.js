@@ -48,13 +48,16 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
+      // 1. Allow standard requests with no origin (like your own internal asset requests)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        const msg =
-          "The CORS policy for this site does not allow access from the specified Origin.";
-        return callback(new Error(msg), false);
+      
+      // 2. Validate against whitelist
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        return callback(null, true);
       }
-      return callback(null, true);
+      
+      // 3. Reject safely without throwing a hard JS Error that crashes the server
+      return callback(null, false);
     },
     credentials: true,
   }),
