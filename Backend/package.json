@@ -7,6 +7,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
+    "build": "npm install --prefix ../Frontend && npm run build --prefix ../Frontend",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
