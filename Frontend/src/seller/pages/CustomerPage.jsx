@@ -18,17 +18,23 @@ const CustomerPage = () => {
   const loadCustomers = async () => {
     try {
       const data = await getCustomers();
-      setCustomers(data || []);
+      setCustomers(Array.isArray(data) ? data : []);
     } catch (err) {
       console.log(err);
+      setCustomers([]);
     }
   };
 
   const stats = useMemo(() => {
+    const safeCustomers = Array.isArray(customers) ? customers : [];
+
     return {
-      totalCustomers: customers.length,
-      activeCustomers: customers.filter((c) => c.totalOrders > 0).length,
-      totalRevenue: customers.reduce((sum, c) => sum + (c.totalSpent || 0), 0),
+      totalCustomers: safeCustomers.length,
+      activeCustomers: safeCustomers.filter((c) => c.totalOrders > 0).length,
+      totalRevenue: safeCustomers.reduce(
+        (sum, c) => sum + (c.totalSpent || 0),
+        0,
+      ),
     };
   }, [customers]);
 

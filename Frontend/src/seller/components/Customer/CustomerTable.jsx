@@ -2,6 +2,8 @@ import React from "react";
 import CustomerRow from "./CustomerRow";
 
 const CustomerTable = ({ customers, setSelectedCustomer }) => {
+  const safeCustomers = Array.isArray(customers) ? customers : [];
+
   return (
     <div className="customer-table-container">
       <table className="customer-table">
@@ -17,13 +19,21 @@ const CustomerTable = ({ customers, setSelectedCustomer }) => {
         </thead>
 
         <tbody>
-          {customers.map((customer) => (
-            <CustomerRow
-              key={customer._id}
-              customer={customer}
-              setSelectedCustomer={setSelectedCustomer}
-            />
-          ))}
+          {safeCustomers.length > 0 ? (
+            safeCustomers.map((customer) => (
+              <CustomerRow
+                key={customer._id}
+                customer={customer}
+                setSelectedCustomer={setSelectedCustomer}
+              />
+            ))
+          ) : (
+            <tr>
+              <td colSpan="6" style={{ textAlign: "center" }}>
+                No customers found
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

@@ -1,17 +1,16 @@
 import React from "react";
 
 const CustomerRow = ({ customer, setSelectedCustomer }) => {
+  const avatarUrl =
+    customer.avatar?.url ||
+    customer.avatar ||
+    "https://ui-avatars.com/api/?name=" + encodeURIComponent(customer.username);
+
   return (
     <tr>
       <td>
         <div className="customer-info">
-          <img
-            src={
-              customer.avatar ||
-              "https://ui-avatars.com/api/?name=" + customer.username
-            }
-            alt=""
-          />
+          <img src={avatarUrl} alt="" />
 
           <div>
             <h4>{customer.username}</h4>
