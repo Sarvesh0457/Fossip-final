@@ -100,10 +100,6 @@ const getSellerProfile = asyncHandler(async (req, res) => {
     user: req.user._id,
   }).populate("user");
 
-  if (!sellerProfile) {
-    throw new ApiError(404, "Seller profile not found");
-  }
-
   return res
     .status(200)
     .json(
