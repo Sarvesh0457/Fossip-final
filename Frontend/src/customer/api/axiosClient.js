@@ -1,13 +1,8 @@
 import axios from "axios";
-
-// Automatically switches between Render live URL and Localhost
-const baseURL =
-  import.meta.env.MODE === "production"
-    ? "/api/v1"
-    : "http://localhost:5000/api/v1";
+import { getApiBaseUrl } from "../../utils/apiBaseUrl";
 
 const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || baseURL,
+  baseURL: getApiBaseUrl(),
   withCredentials: true,
 });
 
