@@ -1,4 +1,5 @@
 import { User } from "../models/User.js";
+import { SellerProfile } from "../models/SellerProfile.js";
 import { ApiResponse } from "../utils/api-response.js";
 import { ApiError } from "../utils/api-error.js";
 import { asyncHandler } from "../utils/async-handler.js";
@@ -68,6 +69,7 @@ const updateProfile = asyncHandler(async (req, res) => {
 // DELETE OWN ACCOUNT ------------------------
 
 const deleteAccount = asyncHandler(async (req, res) => {
+  await SellerProfile.deleteOne({ user: req.user._id });
   await User.findByIdAndDelete(req.user._id);
 
   return res

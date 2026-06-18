@@ -21,7 +21,7 @@ const useDashboard = () => {
 
       setError("");
 
-      const data = await dashboardService.getDashboardData();
+      const data = await dashboardService;
 
       setDashboardData(data);
     } catch (err) {

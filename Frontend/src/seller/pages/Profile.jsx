@@ -1,6 +1,7 @@
 // src/seller/pages/Profile.jsx
 
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Profile.css";
 
@@ -12,8 +13,13 @@ import BankDetailsForm from "../components/Profile/BankDetailsForm";
 
 import useProfile from "../hooks/useProfile";
 import { profileService } from "../services/profileService";
+import { useAuth } from "../../customer/context/AuthContext";
 
 const Profile = () => {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+  const [accountActionLoading, setAccountActionLoading] = useState("");
+
   const {
     loading,
     error,
@@ -48,6 +54,39 @@ const Profile = () => {
 
     if (success) {
       alert("Profile updated successfully");
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      setAccountActionLoading("logout");
+      await profileService.logout();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      logout();
+      setAccountActionLoading("");
+      navigate("/login", { replace: true });
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete your account? This cannot be undone.",
+    );
+
+    if (!confirmed) return;
+
+    try {
+      setAccountActionLoading("delete");
+      await profileService.deleteAccount();
+      logout();
+      alert("Account deleted successfully.");
+      navigate("/", { replace: true });
+    } catch (err) {
+      alert(err?.response?.data?.message || err.message || "Delete failed");
+    } finally {
+      setAccountActionLoading("");
     }
   };
 
@@ -106,6 +145,35 @@ const Profile = () => {
         <button className="profile-save-btn" onClick={handleSave}>
           Update Seller Profile
         </button>
+      </div>
+
+      <div className="profile-card account-actions-card">
+        <div className="profile-card-header account-actions-header">
+          <div>
+            <h2>Account</h2>
+            <p>Manage your seller session and account access.</p>
+          </div>
+        </div>
+
+        <div className="account-actions">
+          <button
+            className="profile-secondary-btn"
+            onClick={handleLogout}
+            disabled={!!accountActionLoading}
+          >
+            {accountActionLoading === "logout" ? "Logging out..." : "Logout"}
+          </button>
+
+          <button
+            className="profile-danger-btn"
+            onClick={handleDeleteAccount}
+            disabled={!!accountActionLoading}
+          >
+            {accountActionLoading === "delete"
+              ? "Deleting..."
+              : "Delete Account"}
+          </button>
+        </div>
       </div>
     </div>
   );

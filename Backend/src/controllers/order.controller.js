@@ -63,7 +63,9 @@ const createOrder = asyncHandler(async (req, res) => {
     totalAmount += item.product.price * item.quantity;
   }
 
-  const { paymentId, razorpayOrderId } = req.body;
+  const { paymentId, razorpayOrderId, paymentMethod } = req.body;
+  const resolvedPaymentMethod = paymentMethod === "cod" ? "cod" : "card";
+  const isCashOnDelivery = resolvedPaymentMethod === "cod";
 
   const order = await Order.create({
     user: req.user._id,
@@ -74,8 +76,9 @@ const createOrder = asyncHandler(async (req, res) => {
     paymentId,
     razorpayOrderId,
 
-    paymentStatus: "paid",
-    orderStatus: "confirmed",
+    paymentMethod: resolvedPaymentMethod,
+    paymentStatus: isCashOnDelivery ? "pending" : "paid",
+    orderStatus: isCashOnDelivery ? "pending" : "confirmed",
   });
 
   await Cart.deleteMany({

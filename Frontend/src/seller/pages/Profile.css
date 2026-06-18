@@ -153,7 +153,10 @@
 }
 
 /* --- Buttons --- */
-.profile-save-btn, .verify-email-btn {
+.profile-save-btn,
+.verify-email-btn,
+.profile-secondary-btn,
+.profile-danger-btn {
   background: var(--text-main);
   color: #ffffff;
   border: none;
@@ -165,14 +168,58 @@
   transition: all 0.2s ease;
 }
 
-.profile-save-btn:hover, .verify-email-btn:hover {
+.profile-save-btn:hover,
+.verify-email-btn:hover,
+.profile-secondary-btn:hover {
   background: var(--accent-color);
   transform: translateY(-2px);
+}
+
+.profile-save-btn:disabled,
+.verify-email-btn:disabled,
+.profile-secondary-btn:disabled,
+.profile-danger-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
 }
 
 .profile-create-btn-container {
   display: flex;
   justify-content: flex-end;
+}
+
+.account-actions-card {
+  gap: 0;
+}
+
+.account-actions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.profile-secondary-btn {
+  background: var(--bg-body);
+  color: var(--text-main);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.profile-danger-btn {
+  background: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+
+.profile-danger-btn:hover {
+  background: #fff1f1;
+  transform: translateY(-2px);
 }
 
 /* --- Photo Section --- */
@@ -264,4 +311,6 @@
   .form-group.full-width { grid-column: span 1; }
   .profile-photo-container { flex-direction: column; align-items: flex-start; gap: 20px; }
   .profile-card { padding: 24px; }
+  .account-actions { flex-direction: column; }
+  .account-actions button { width: 100%; }
 }

@@ -2,8 +2,48 @@
 
 import React from "react";
 import "./CreateProductCard.css";
+import { useState, useEffect } from "react";
 
 const CreateProductCard = ({ product, onInputChange, onCreateProduct }) => {
+  const [sizeInput, setSizeInput] = useState(product.size.join(", "));
+  const [colorInput, setColorInput] = useState(product.color.join(", "));
+
+  useEffect(() => {
+    setSizeInput(product.size.join(", "));
+  }, [product.size]);
+
+  useEffect(() => {
+    setColorInput(product.color.join(", "));
+  }, [product.color]);
+
+  // Clean, uninterrupted local state changes
+  const handleSizeChange = (val) => {
+    setSizeInput(val);
+  };
+
+  const handleColorChange = (val) => {
+    setColorInput(val);
+  };
+
+  const handleSubmit = (e) => {
+    // Convert your text strings into arrays right now
+    const finalSizes = sizeInput
+      .split(",")
+      .map((i) => i.trim())
+      .filter(Boolean);
+    const finalColors = colorInput
+      .split(",")
+      .map((i) => i.trim())
+      .filter(Boolean);
+
+    // Inject them into the parent form state
+    onInputChange("size", finalSizes);
+    onInputChange("color", finalColors);
+
+    // Trigger your original save/create function
+    onCreateProduct(e);
+  };
+
   return (
     <div className="create-product-card">
       <div className="create-product-card-header">
@@ -126,16 +166,8 @@ const CreateProductCard = ({ product, onInputChange, onCreateProduct }) => {
           <label>Sizes (comma separated)</label>
           <input
             type="text"
-            value={product.size.join(",")}
-            onChange={(e) =>
-              onInputChange(
-                "size",
-                e.target.value
-                  .split(",")
-                  .map((item) => item.trim())
-                  .filter(Boolean),
-              )
-            }
+            value={sizeInput} // 👈 Change this
+            onChange={(e) => handleSizeChange(e.target.value)} // 👈 Change this
             placeholder="S,M,L,XL"
           />
         </div>
@@ -145,16 +177,8 @@ const CreateProductCard = ({ product, onInputChange, onCreateProduct }) => {
           <label>Colors (comma separated)</label>
           <input
             type="text"
-            value={product.color.join(",")}
-            onChange={(e) =>
-              onInputChange(
-                "color",
-                e.target.value
-                  .split(",")
-                  .map((item) => item.trim())
-                  .filter(Boolean),
-              )
-            }
+            value={colorInput} // 👈 Change this
+            onChange={(e) => handleColorChange(e.target.value)} // 👈 Change this
             placeholder="Black,White"
           />
         </div>
@@ -226,7 +250,7 @@ const CreateProductCard = ({ product, onInputChange, onCreateProduct }) => {
         </div>
       </div>
 
-      <button className="create-product-btn" onClick={onCreateProduct}>
+      <button className="create-product-btn" onClick={handleSubmit}>
         Create Product
       </button>
     </div>

@@ -3,33 +3,33 @@
 // Example using fetch.
 // Replace BASE_URL with your backend URL.
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
+// const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
 
-export const dashboardService = {
-  async getDashboardData() {
-    try {
-      const response = await fetch(`${BASE_URL}/dashboard`, {
-        headers: {
-          "Content-Type": "application/json",
+// export const dashboardService = {
+//   async getDashboardData() {
+//     try {
+//       const response = await fetch(`${BASE_URL}/dashboard`, {
+//         headers: {
+//           "Content-Type": "application/json",
 
-          // Authorization:
-          // `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+//           // Authorization:
+//           // `Bearer ${localStorage.getItem("token")}`,
+//         },
+//       });
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch dashboard data.");
-      }
+//       if (!response.ok) {
+//         throw new Error("Failed to fetch dashboard data.");
+//       }
 
-      return await response.json();
-    } catch (error) {
-      console.error(error);
+//       return await response.json();
+//     } catch (error) {
+//       console.error(error);
 
-      // Temporary fallback data
-      return mockDashboardData;
-    }
-  },
-};
+//       // Temporary fallback data
+//       return mockDashboardData;
+//     }
+//   },
+// };
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ export const dashboardService = {
 |
 */
 
-const mockDashboardData = {
+export const dashboardService = {
   stats: {
     totalRevenue: {
       value: "₹1,28,400",

@@ -21,12 +21,12 @@ const menuItems = [
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState(false);
+
   const { user, logout } = useAuth();
-  const location = useLocation(); // Helps us highlight the active page
+  const location = useLocation();
 
   return (
     <>
-      {/* Top Announcement Bar */}
       <div className="top-announcement-bar">
         <div className="top-bar-content">
           <p>✨ FREE SHIPPING ON ORDERS OVER ₹999</p>
@@ -37,10 +37,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main Header Container */}
       <header className="main-header">
         <div className="header-container">
-          {/* Mobile Menu Trigger */}
+          {/* Mobile menu button */}
           <div
             className="mobile-menu-trigger"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -48,15 +47,16 @@ const Navbar = () => {
             <img src={menu} alt="Open Menu" />
           </div>
 
-          {/* Premium Clean Logo */}
+          {/* Logo */}
           <div className="brand-logo">
             <Link to="/">Urban Fashion</Link>
           </div>
 
-          {/* Navigation Links */}
+          {/* Desktop nav */}
           <nav className="navigation-links">
             {menuItems.map((item) => {
               const isActive = location.pathname === item.path;
+
               return (
                 <Link
                   key={item.name}
@@ -69,14 +69,13 @@ const Navbar = () => {
             })}
           </nav>
 
-          {/* Modern Search Wrapper */}
+          {/* Search */}
           <div className="search-wrapper">
             <Searchbar />
           </div>
 
-          {/* Action Utilities Group */}
+          {/* Right side actions */}
           <div className="utility-actions">
-            {/* Account Profile Link */}
             <div className="profile-dropdown-wrapper">
               {!user ? (
                 <Link to="/login" className="utility-item-link">
@@ -92,9 +91,7 @@ const Navbar = () => {
                     onClick={() => setProfileDropdown(!profileDropdown)}
                   >
                     <img src={profile} alt="Account" />
-
                     <span className="utility-text">{user.username}</span>
-
                     <span className="dropdown-arrow">▼</span>
                   </div>
 
@@ -129,7 +126,6 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Wishlist Link */}
             <Link to="/wishlist" className="utility-item-link">
               <div className="utility-card">
                 <img src={heart} alt="Wishlist" />
@@ -137,7 +133,6 @@ const Navbar = () => {
               </div>
             </Link>
 
-            {/* Shopping Cart Link */}
             <Link to="/cart" className="utility-item-link">
               <div className="utility-card">
                 <img src={cart} alt="Cart" />
@@ -145,7 +140,6 @@ const Navbar = () => {
               </div>
             </Link>
 
-            {/* Elegant Logout Utility */}
             {user && (
               <button onClick={logout} className="navbar-logout-btn">
                 Logout
@@ -153,22 +147,22 @@ const Navbar = () => {
             )}
           </div>
         </div>
-      </header>
 
-      {/* Mobile Sidebar/Dropdown Menu */}
-      {menuOpen && (
-        <div className="mobile-navigation-overlay">
-          {menuItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-      )}
+        {/* MOBILE MENU INSIDE HEADER */}
+        {menuOpen && (
+          <div className="mobile-navigation-overlay">
+            {menuItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        )}
+      </header>
     </>
   );
 };

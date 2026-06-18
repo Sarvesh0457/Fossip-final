@@ -142,6 +142,19 @@
   margin-bottom: 24px;
 }
 
+.success-box.pending-box {
+  background: #fffbeb;
+  border-color: #fcd34d;
+}
+
+.success-box.pending-box h2 {
+  color: #b45309;
+}
+
+.success-box.pending-box p {
+  color: #92400e;
+}
+
 .receipt-btn, .orders-btn {
   width: 100%;
   height: 48px;

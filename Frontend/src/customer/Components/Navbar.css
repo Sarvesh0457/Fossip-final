@@ -231,16 +231,33 @@
     padding: 6px;
   }
 
+  .main-header {
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+
+    /* Add this */
+    position: sticky;
+  }
+
   .mobile-navigation-overlay {
+    position: absolute;
+    top: 100%; /* directly below navbar */
+    left: 0;
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     padding: 16px 24px;
     gap: 16px;
-    background-color: var(--bg-card);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.02);
-  }
 
+    background: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+  }
   .mobile-navigation-overlay a {
     text-decoration: none;
     color: var(--text-main);

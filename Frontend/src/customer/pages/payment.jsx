@@ -18,20 +18,25 @@ function Payment() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const isCashOnDelivery = paymentMethod === "cod";
+
   const downloadReceipt = () => {
+    const methodLabel = isCashOnDelivery ? "Cash On Delivery" : "Card Payment";
+    const paymentStatus = isCashOnDelivery ? "Pending" : "Paid";
+    const orderStatus = isCashOnDelivery ? "Pending" : "Confirmed";
+
     const receipt = `
 ========== FOSSIP RECEIPT ==========
 Date: ${new Date().toLocaleString()}
 
-Payment Method: ${
-      paymentMethod === "card" ? "Card Payment" : "Cash On Delivery"
-    }
+Payment Method: ${methodLabel}
+Payment Status: ${paymentStatus}
 
-Total Amount: ₹${cartSubtotal}
+Total Amount: Rs. ${cartSubtotal}
 
-Order Status: Confirmed
+Order Status: ${orderStatus}
 
-Thank you for shopping with FOSSIP ❤️
+Thank you for shopping with FOSSIP
 ===================================
 `;
 
@@ -69,6 +74,8 @@ Thank you for shopping with FOSSIP ❤️
 
         razorpayOrderId:
           paymentMethod === "card" ? `demo_order_${Date.now()}` : null,
+
+        paymentMethod,
       });
 
       setLoading(false);
@@ -87,7 +94,7 @@ Thank you for shopping with FOSSIP ❤️
 
         <div className="payment-row">
           <span>Total Amount</span>
-          <strong>₹{cartSubtotal}</strong>
+          <strong>Rs. {cartSubtotal}</strong>
         </div>
 
         <div className="payment-methods">
@@ -153,10 +160,20 @@ Thank you for shopping with FOSSIP ❤️
         </button>
 
         {success && (
-          <div className="success-box">
-            <h2>✅ Payment Successful</h2>
+          <div
+            className={`success-box ${isCashOnDelivery ? "pending-box" : ""}`}
+          >
+            <h2>
+              {isCashOnDelivery
+                ? "Order Placed - Payment Pending"
+                : "Payment Successful"}
+            </h2>
 
-            <p>Your order has been placed successfully.</p>
+            <p>
+              {isCashOnDelivery
+                ? "Cash on Delivery selected. Your order is pending until the seller confirms it."
+                : "Your order has been placed successfully."}
+            </p>
 
             <button className="receipt-btn" onClick={downloadReceipt}>
               Download Receipt

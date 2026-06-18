@@ -61,8 +61,14 @@ const orderSchema = new mongoose.Schema(
 
     paymentStatus: {
       type: String,
-      enum: ["pending", "paid", "failed"],
+      enum: ["pending", "paid", "failed", "refunded"],
       default: "pending",
+    },
+
+    paymentMethod: {
+      type: String,
+      enum: ["card", "cod"],
+      default: "card",
     },
 
     shippingAddress: {
@@ -75,12 +81,6 @@ const orderSchema = new mongoose.Schema(
     paymentId: String,
 
     razorpayOrderId: String,
-
-    paymentStatus: {
-      type: String,
-      enum: ["pending", "paid", "failed", "refunded"],
-      default: "pending",
-    },
   },
   {
     timestamps: true,

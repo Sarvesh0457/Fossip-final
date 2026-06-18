@@ -16,7 +16,7 @@ import orderRouter from "./routes/order.routes.js";
 import reviewRouter from "./routes/review.routes.js";
 import wishlistRouter from "./routes/wishlist.routes.js";
 import paymentRouter from "./routes/payment.routes.js";
-import { razorpay } from "./utils/razorpay.js";
+// import { razorpay } from "./utils/razorpay.js";
 
 // Recreate __dirname for ES Modules
 const __filename = fileURLToPath(import.meta.url);

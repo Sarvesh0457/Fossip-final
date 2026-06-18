@@ -5,6 +5,9 @@ import { getProductImageUrl } from "../../../utils/productImage";
 const OrderDetailsModal = ({ order, onClose }) => {
   if (!order) return null;
 
+  const paymentMethod =
+    order.paymentMethod === "cod" ? "Cash on Delivery" : "Card Payment";
+
   return (
     <div className="modal-overlay">
       <div className="order-modal">
@@ -12,7 +15,7 @@ const OrderDetailsModal = ({ order, onClose }) => {
           <h2>Order Details</h2>
 
           <button className="close-btn" onClick={onClose}>
-            ✕
+            X
           </button>
         </div>
 
@@ -68,7 +71,7 @@ const OrderDetailsModal = ({ order, onClose }) => {
 
                 <p>Color : {item.color}</p>
 
-                <p>Price : ₹{item.price}</p>
+                <p>Price : Rs. {item.price}</p>
               </div>
             </div>
           ))}
@@ -79,15 +82,21 @@ const OrderDetailsModal = ({ order, onClose }) => {
           <h3>Payment</h3>
 
           <p>
+            <strong>Method :</strong> {paymentMethod}
+          </p>
+
+          <p>
             <strong>Status :</strong> {order.paymentStatus}
           </p>
 
-          <p>
-            <strong>Payment ID :</strong> {order.paymentId}
-          </p>
+          {order.paymentId && (
+            <p>
+              <strong>Payment ID :</strong> {order.paymentId}
+            </p>
+          )}
 
           <p>
-            <strong>Total Amount :</strong> ₹{order.totalAmount}
+            <strong>Total Amount :</strong> Rs. {order.totalAmount}
           </p>
         </div>
       </div>

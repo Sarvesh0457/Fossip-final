@@ -117,12 +117,32 @@ export const profileService = {
 
   sendVerificationEmail: async () => {
     const res = await axios.post(
-      `${API_URL}/auth/send-verification-email`,
+      `${API_URL}/auth/resend-email-verification`,
       {},
       {
         headers: getAuthHeaders(),
       },
     );
+
+    return res.data;
+  },
+
+  logout: async () => {
+    const res = await axios.post(
+      `${API_URL}/auth/logout`,
+      {},
+      {
+        headers: getAuthHeaders(),
+      },
+    );
+
+    return res.data;
+  },
+
+  deleteAccount: async () => {
+    const res = await axios.delete(`${API_URL}/users/delete-account`, {
+      headers: getAuthHeaders(),
+    });
 
     return res.data;
   },
