@@ -41,7 +41,8 @@ app.use(express.urlencoded({ extended: true }));
 // Dynamic CORS configuration
 const allowedOrigins = [
   "http://localhost:5173", // Local React development
-  process.env.FRONTEND_URL, // Your live Render URL
+  process.env.FRONTEND_URL,
+  "https://fossip-og9g.onrender.com" // Your live Render URL
 ].filter(Boolean);
 
 app.use(
