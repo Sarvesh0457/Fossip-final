@@ -1,38 +1,19 @@
-import axios from "axios";
-
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
-
-const getAuthHeaders = () => {
-  const token = localStorage.getItem("accessToken");
-
-  return {
-    Authorization: `Bearer ${token}`,
-  };
-};
+import API from "./axiosService";
 
 export const profileService = {
   // ================= USER =================
 
   getCurrentUser: async () => {
-    const res = await axios.get(`${API_URL}/users/me`, {
-      headers: getAuthHeaders(),
-    });
-
+    const res = await API.get("/users/me");
     return res.data.data;
   },
 
   updateUserProfile: async (profileData) => {
-    const res = await axios.patch(
-      `${API_URL}/users/update-profile`,
-      {
-        fullName: profileData.fullName,
-        phoneNumber: profileData.phoneNumber,
-        address: profileData.address,
-      },
-      {
-        headers: getAuthHeaders(),
-      },
-    );
+    const res = await API.patch("/users/update-profile", {
+      fullName: profileData.fullName,
+      phoneNumber: profileData.phoneNumber,
+      address: profileData.address,
+    });
 
     return res.data.data;
   },
@@ -40,10 +21,7 @@ export const profileService = {
   // ================= SELLER PROFILE =================
 
   getProfile: async () => {
-    const res = await axios.get(`${API_URL}/seller/profile`, {
-      headers: getAuthHeaders(),
-    });
-
+    const res = await API.get("/seller/profile");
     return res.data.data;
   },
 
@@ -63,18 +41,13 @@ export const profileService = {
       upiId: profileData.upiId,
     };
 
-    const res = await axios.post(`${API_URL}/seller/profile`, payload, {
-      headers: getAuthHeaders(),
-    });
+    const res = await API.post("/seller/profile", payload);
 
     return res.data.data;
   },
 
-  // alias for update
   saveProfile: async (profileData) => {
-    const res = await axios.post(`${API_URL}/seller/profile`, profileData, {
-      headers: getAuthHeaders(),
-    });
+    const res = await API.post("/seller/profile", profileData);
 
     return res.data.data;
   },
@@ -86,9 +59,8 @@ export const profileService = {
 
     formData.append("avatar", file);
 
-    const res = await axios.patch(`${API_URL}/users/avatar`, formData, {
+    const res = await API.patch("/users/avatar", formData, {
       headers: {
-        ...getAuthHeaders(),
         "Content-Type": "multipart/form-data",
       },
     });
@@ -103,9 +75,8 @@ export const profileService = {
 
     formData.append("governmentIdImage", file);
 
-    const res = await axios.patch(`${API_URL}/seller/government-id`, formData, {
+    const res = await API.patch("/seller/government-id", formData, {
       headers: {
-        ...getAuthHeaders(),
         "Content-Type": "multipart/form-data",
       },
     });
@@ -116,33 +87,19 @@ export const profileService = {
   // ================= EMAIL =================
 
   sendVerificationEmail: async () => {
-    const res = await axios.post(
-      `${API_URL}/auth/resend-email-verification`,
-      {},
-      {
-        headers: getAuthHeaders(),
-      },
-    );
+    const res = await API.post("/auth/resend-email-verification");
 
     return res.data;
   },
 
   logout: async () => {
-    const res = await axios.post(
-      `${API_URL}/auth/logout`,
-      {},
-      {
-        headers: getAuthHeaders(),
-      },
-    );
+    const res = await API.post("/auth/logout");
 
     return res.data;
   },
 
   deleteAccount: async () => {
-    const res = await axios.delete(`${API_URL}/users/delete-account`, {
-      headers: getAuthHeaders(),
-    });
+    const res = await API.delete("/users/delete-account");
 
     return res.data;
   },

@@ -1,32 +1,15 @@
-import axios from "axios";
+import API from "./axiosService";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
-
-const getAuthHeaders = () => {
-  const token = localStorage.getItem("accessToken");
-
-  return {
-    Authorization: `Bearer ${token}`,
-  };
-};
-
-// SELLER ORDERS ONLY
+// GET SELLER ORDERS
 export const getOrders = async () => {
-  const res = await axios.get(`${API_URL}/orders/seller-orders`, {
-    headers: getAuthHeaders(),
-  });
+  const res = await API.get("/orders/seller-orders");
 
   return res.data.data;
 };
 
+// UPDATE ORDER STATUS
 export const updateOrderStatus = async (orderId, status) => {
-  const res = await axios.patch(
-    `${API_URL}/orders/${orderId}/status`,
-    { status },
-    {
-      headers: getAuthHeaders(),
-    },
-  );
+  const res = await API.patch(`/orders/${orderId}/status`, { status });
 
   return res.data.data;
 };
